@@ -1,4 +1,4 @@
-class Person:
+class Person_Model:
     
     # Constructor
     def __init__(self, id_person, id_document_type_fk, doc_person, first_name_person, second_name_person, first_lastname_person, second_lastname_person, email_person, phone_person, address_person, state_person):
