@@ -1,8 +1,9 @@
 from config import config 
-from flask import Flask
+from src import init_app
+
 
 configuration = config['development']
-app = Flask(__name__)
+app = init_app(configuration)
 
 if __name__ == '__main__':
     app.run(debug=configuration.DEBUG)
