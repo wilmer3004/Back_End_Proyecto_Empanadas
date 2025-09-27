@@ -40,7 +40,6 @@ class Person_Route:
                 email_person=data.get('email'),
                 phone_person=data.get('phone'),
                 address_person=data.get('address'),
-                created_at=None
             )
             # Call the service to create a new person
             result = Person_Service.create(person_data.to_dict())
@@ -85,8 +84,7 @@ class Person_Route:
                 second_last_name_person=data.get('second_last_name'),
                 email_person=data.get('email'),
                 phone_person=data.get('phone'),
-                address_person=data.get('address'),
-                created_at=None
+                address_person=data.get('address')
             )
             # Call the service to update the person's details
             result = Person_Service.update(id, person_data.to_dict())
