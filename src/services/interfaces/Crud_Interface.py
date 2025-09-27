@@ -1,18 +1,23 @@
 from abc import ABC, abstractmethod
 
 class Crud_Interface(ABC):
+    
     @abstractmethod
-    def create(self, data):
+    def consult(cls):
+        pass
+    
+    @abstractmethod
+    def create(cls, data):
         pass
 
     @abstractmethod
-    def read(self, id):
+    def consult_id(cls, id):
         pass
 
     @abstractmethod
-    def update(self, id, data):
+    def update(cls, id, data):
         pass
 
     @abstractmethod
-    def change_state(self, id):
+    def change_state(cls, id):
         pass
