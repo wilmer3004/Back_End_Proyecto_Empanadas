@@ -66,10 +66,10 @@ class Person_Model:
         self.__second_name_person = second_name_person
 
     def set_first_lastname_person(self, first_last_name_person):
-        self.__first_lastname_person = first_last_name_person
+        self.__first_last_name_person = first_last_name_person
     
     def set_second_lastname_person(self, second_last_name_person):
-        self.__second_lastname_person = second_last_name_person
+        self.__second_last_name_person = second_last_name_person
     
     def set_email_person(self, email_person):
         self.__email_person = email_person
