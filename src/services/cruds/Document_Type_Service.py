@@ -9,7 +9,7 @@ class Document_Type_Service(Crud_Interface):
     
     @classmethod
     def consult(cls):
-        # mplement the logic to retreive all document types from the database
+        # implement the logic to retreive all document types from the database
         try:
             connection = get_db_conecction()
             document_types=[]
