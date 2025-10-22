@@ -73,10 +73,45 @@ class Customer_type_service(Crud_Interface):
     #Update a customer type details
     @classmethod
     def update(cls,id,data):
-        pass
+        try:
+            connection = get_db_conecction()
+            with connection.cursor() as cursor:
+                sql = "UPDATE customer_type SET name_customer_type = %s, detail_customer_type = %s WHERE id_customer_type = %s"
+                data_tuple = (data['name_customer_type'], data['detail_customer_type'], id)
+                cursor.execute(sql, data_tuple)
+                connection.commit()
+                if cursor.rowcount == 0:
+                    return {'error': 'Customer type not found', 'code': 404}
+                return {"message": "Customer type updated successfully"}
+        except Exception as e:
+            print(f"An error ocurred: {e}")
+            return {"error":"Failed to update customer type", "code":500}
+        finally:
+            connection.close()
 
     # Change the state of a customer type (activate/deativate)
     @classmethod
     def change_state(cls, id):
-        pass
+        try:
+            connection = get_db_conecction()
+            with connection.cursor() as cursor:
+                # First, retrieve the current state of the customer type
+                sql_select = "SELECT state_customer_type FROM customer_type WHERE id_customer_type = %s"
+                cursor.execute(sql_select, (id,))
+                row = cursor.fetchone()
+
+                if row:
+                    current_state = row[0]
+                    # Toggle the state
+                    new_state = not current_state
+                    sql_update = "UPDATE customer_type SET state_customer_type = %s WHERE id_customer_type = %s"
+                    cursor.execute(sql_update, (new_state, id))
+                    connection.commit()
+                    return {"message": "Customer type state changed successfully"}
+                return {"error": "Customer type not found", "code": 404}
+        except Exception as e:
+            print(f"An error ocurred: {e}")
+            return {"error":"Failed to change customer type state", "code":500}
+        finally:
+            connection.close()
      
