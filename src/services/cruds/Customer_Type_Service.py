@@ -2,7 +2,7 @@ from src.services.interfaces.Crud_Interface import Crud_Interface
 from src.models.cruds.Customer_Type_Model import Customer_Type_Model
 from src.database.database import get_db_conecction
 
-class Customer_type_service(Crud_Interface):
+class Customer_Type_Service(Crud_Interface):
     # Implementing the abstrac method from Crud_Interface
     # Consult all customer types
 
