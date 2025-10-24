@@ -16,10 +16,10 @@ class Rol_Service(Crud_interface):
             #Usign a cursor to execute SQL queries
             with connection.cursor() as cursor:
                 cursor.execute("SELECT * FROM rol")
-                restult_person = cursor.fetchall()
-                for row in :
-                    person = rol_
-                    people.append(role-to_dict())
+                result_rol = cursor.fetchall()
+                for row in result_rol:
+                    rol = Rol_Model (row[0], row[1], row[2])
+                    people.append(rol.to_dict())
                 connection.commit()
             return people
         # Handle exceptions and ensure the connection is closed
@@ -34,7 +34,7 @@ class Rol_Service(Crud_interface):
             connection = get_db_connection()
             with connection.cursor() as cursor:
                 sql = """INSERT INTO rol (name_rol) VALUES (%s)"""
-                data_tuple = (data^[name_rol])
+                data_tuple = (data["name_rol"])
                 cursor.execute(sql, data_tuple)
                 connection.commit()
                 return{"message": "Rol created successfully"}
@@ -69,7 +69,7 @@ def update(cls,id,data):
         connection = get_db_connection()
         with connection.cursor() as cursor:
             sql ="""UPDATE Rol name_rol WHERE id_rol=%s"""
-            data_tuple =(data[name_rol],id)
+            data_tuple =(data["name_rol"],id)
             cursor.excurte(sql,data_tuple)
             connection.commit()
             if cursor.rowcount == 0:
