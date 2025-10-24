@@ -1,7 +1,7 @@
 class Product_Type_Model:
     
     # Constructor
-    def __init__(self, id_product_type, name_product_type, detail_product_type, state_product_type):
+    def __init__(self, id_product_type, name_product_type, detail_product_type, state_product_type  = True):
         self.__id_product_type = id_product_type
         self.__name_product_type = name_product_type
         self.__detail_product_type = detail_product_type
