@@ -4,6 +4,8 @@ from src.routes.cruds.Document_Type_Route import Document_Type_Route
 from src.routes.cruds.Customer_Type_Route import Customer_Type_Route
 from src.routes.cruds.Report_Type_Route import Report_Type_Route
 from src.routes.cruds.Product_Type_Route import Product_Type_Route
+from src.routes.cruds.User_Emp_Route import User_Emp_Route
+from src.routes.cruds.Product_Route import Product_Route
 
 app = Flask(__name__)
 
@@ -22,5 +24,9 @@ def init_app(config):
     app.register_blueprint(Report_Type_Route.main, url_prefix='/api/v1/report_types')
     # Register the Product_Type_Route blueprint with a URL prefix
     app.register_blueprint(Product_Type_Route.main, url_prefix='/api/v1/product_types')
+    # Register the User_Emp_Route blueprint with a URL prefix
+    app.register_blueprint(User_Emp_Route.main, url_prefix='/api/v1/user_emps')
+    # Register the Product_Route blueprint with a URL prefix
+    app.register_blueprint(Product_Route.main, url_prefix='/api/v1/products')
     
     return app
