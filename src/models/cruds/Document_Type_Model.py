@@ -1,7 +1,7 @@
-class Document_type_Model:
+class Document_Type_Model:
 
     # Constructor
-    def __init__(self, id_document_type, name_document_type, acronym_document_type, state_document_type):
+    def __init__(self, id_document_type, name_document_type, acronym_document_type, state_document_type=True):
         self.__id_document_type = id_document_type
         self.__name_document_type = name_document_type
         self.__acronym_document_type = acronym_document_type

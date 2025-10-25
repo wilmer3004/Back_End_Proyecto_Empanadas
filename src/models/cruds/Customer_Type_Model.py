@@ -1,7 +1,7 @@
 class Customer_Type_Model:
 
     # Constructor
-    def __init__(self, id_customer_type, name_customer_type, detail_customer_type, state_customer_type):
+    def __init__(self, id_customer_type, name_customer_type, detail_customer_type, state_customer_type = True):
         self.__id_customer_type = id_customer_type
         self.__name_customer_type = name_customer_type
         self.__detail_customer_type = detail_customer_type

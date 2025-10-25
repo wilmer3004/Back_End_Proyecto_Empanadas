@@ -1,6 +1,6 @@
 class RoL_Model:
     # Constructor
-    def __init__(self, id_rol, name_rol, state_rol):
+    def __init__(self, id_rol, name_rol, state_rol = True):
         self.__id_rol = id_rol
         self.__name_rol = name_rol
         self.__state_rol = state_rol

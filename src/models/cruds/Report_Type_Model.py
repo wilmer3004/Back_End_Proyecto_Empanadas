@@ -1,7 +1,7 @@
-class Report_type_Model:
+class Report_Type_Model:
 
 # Constructor
-    def __init__(self, id_report_type, name_report_type, detail_report_type, state_report_type):
+    def __init__(self, id_report_type, name_report_type, detail_report_type, state_report_type= True):
         self.__id_report_type = id_report_type
         self.__name_report_type = name_report_type
         self.__detail_report_type = detail_report_type

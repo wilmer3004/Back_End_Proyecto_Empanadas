@@ -15,8 +15,8 @@ class Person_Route:
     def get_persons():
         try:
             # Call the service to get all persons
-            persons = Person_Service.consult()
-            return jsonify(Response_Success("Persons retrieved successfully", persons).to_dict()), 200
+            people = Person_Service.consult()
+            return jsonify(Response_Success("Persons retrieved successfully", people).to_dict()), 200
         # Handle exceptions and return an error response
         except Exception as e:
             traceback.print_exc()
