@@ -8,7 +8,8 @@ def get_db_conecction():
             user=config('POSTGRES_USER'),
             password=config('POSTGRES_PASSWORD'),
             dbname=config('POSTGRES_DB'),
-            port=config('POSTGRES_PORT', default=5432, cast=int)
+            port=config('POSTGRES_PORT', default=5432, cast=int),
+            
         )
         return connection
     except Exception as e:
