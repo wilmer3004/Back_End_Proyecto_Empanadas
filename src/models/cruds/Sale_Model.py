@@ -1,7 +1,7 @@
 class Sale_Model:
 
     # Constructor
-    def __init__(self, id_sale, id_order_fk, date_sale, total_sale, type_sale, state_sale):
+    def __init__(self, id_sale, id_order_fk, date_sale, total_sale, type_sale, state_sale = True):
         self.__id_sale = id_sale
         self.__id_order_fk = id_order_fk
         self.__date_sale = date_sale
