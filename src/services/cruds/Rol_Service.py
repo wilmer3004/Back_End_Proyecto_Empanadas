@@ -1,8 +1,8 @@
-from src.services.interfaces.Crud_Interface import Crud_interface
+from src.services.interfaces.Crud_Interface import Crud_Interface
 from src.models.cruds.Rol_Model import Rol_Model
-from src.database.database import get_db_connection
+from src.database.database import get_db_conecction
 
-class Rol_Service(Crud_interface):
+class Rol_Service(Crud_Interface):
     
     #Implementing the abstract methods from Crud_interface
     #Consult all roles
@@ -10,7 +10,7 @@ class Rol_Service(Crud_interface):
     def consult(cls):
         #Implement the logic to retrieve all persons from the database
         try:
-            connection = get_db_connection()
+            connection = get_db_conecction()
             people=[]
             
             #Usign a cursor to execute SQL queries
@@ -31,7 +31,7 @@ class Rol_Service(Crud_interface):
     
     def create(cls, data):
         try:
-            connection = get_db_connection()
+            connection = get_db_conecction()
             with connection.cursor() as cursor:
                 sql = """INSERT INTO rol (name_rol) VALUES (%s)"""
                 data_tuple = (data["name_rol"])
@@ -48,7 +48,7 @@ class Rol_Service(Crud_interface):
 @classmethod
 def consult_id(cls,id):
     try:
-        connection = get_db_connection()
+        connection = get_db_conecction()
         with connection.cursor() as cursor:
             sql = "SELECT * FROM rol WHERE id_rol = %s"
             cursor.execute(sql, (id,))
@@ -66,7 +66,7 @@ def consult_id(cls,id):
 @classmethod
 def update(cls,id,data):
     try:
-        connection = get_db_connection()
+        connection = get_db_conecction()
         with connection.cursor() as cursor:
             sql ="""UPDATE Rol name_rol WHERE id_rol=%s"""
             data_tuple =(data["name_rol"],id)
@@ -83,7 +83,7 @@ def update(cls,id,data):
     @classmethod
     def  change_state(cls,id):
         try:
-            connection = get_db_connection()
+            connection = get_db_conecction()
             with connection.cursor() as cursor:
                 #Firs, check the current state of the role
                 sql_check = "SELECT state_rol FROM person WHERE id_rol = %s"
