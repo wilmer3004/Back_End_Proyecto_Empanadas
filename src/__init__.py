@@ -6,6 +6,11 @@ from src.routes.cruds.Report_Type_Route import Report_Type_Route
 from src.routes.cruds.Product_Type_Route import Product_Type_Route
 from src.routes.cruds.User_Emp_Route import User_Emp_Route
 from src.routes.cruds.Product_Route import Product_Route
+from src.routes.cruds.Customer_Route import Customer_Route
+from src.routes.cruds.Report_Route import Report_Route
+from src.routes.cruds.Rol_Route import Rol_Route
+from src.routes.cruds.Sale_Route import Sale_Route
+from src.routes.cruds.Order_Prod_Route import Order_Prod_Route
 
 app = Flask(__name__)
 
@@ -28,5 +33,17 @@ def init_app(config):
     app.register_blueprint(User_Emp_Route.main, url_prefix='/api/v1/user_emps')
     # Register the Product_Route blueprint with a URL prefix
     app.register_blueprint(Product_Route.main, url_prefix='/api/v1/products')
+    # Register the Customer_Route blueprint with a URL prefix
+    app.register_blueprint(Customer_Route.main, url_prefix='/api/v1/customers')
+    # Register the Report_Route blueprint with a URL prefix
+    app.register_blueprint(Report_Route.main, url_prefix='/api/v1/reports')
+    # Register the Rol_Route blueprint with a URL prefix
+    app.register_blueprint(Rol_Route.main, url_prefix='/api/v1/rols')
+    # Register the Sale_Route blueprint with a URL prefix
+    app.register_blueprint(Sale_Route.main, url_prefix='/api/v1/sales')
+    # Register the Order_Prod_Route blueprint with a URL prefix
+    app.register_blueprint(Order_Prod_Route.main, url_prefix='/api/v1/order_prods')
     
+    
+        
     return app

@@ -1,4 +1,4 @@
-class RoL_Model:
+class Rol_Model:
     # Constructor
     def __init__(self, id_rol, name_rol, state_rol = True):
         self.__id_rol = id_rol
