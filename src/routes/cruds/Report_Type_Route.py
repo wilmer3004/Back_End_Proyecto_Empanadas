@@ -4,6 +4,7 @@ from src.services.cruds.Report_Type_Service import Report_Type_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Report_Type_Model import Report_Type_Model
+from src.security.util.Decorators import require_token
 
 class Report_Type_Route:
     
@@ -12,6 +13,9 @@ class Report_Type_Route:
     
     # Route to handle CRUD operations for Report Type
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_report_types():
         try:
             # Call the service to get all report types
@@ -24,6 +28,9 @@ class Report_Type_Route:
         
     # Create a new report type
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_report_type():
         try:
             data = request.get_json()
@@ -45,6 +52,9 @@ class Report_Type_Route:
         
     # Get a report type by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_report_type_by_id(id):
         try:
             # Call the service to get a report type by ID
@@ -59,6 +69,9 @@ class Report_Type_Route:
     
     # Update a report type by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_report_type(id):
         try:
             data = request.get_json()
@@ -79,6 +92,9 @@ class Report_Type_Route:
     
     # Change the state of a report type by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_report_type_state(id):
         try:
             # Call the service to change the state of a report type by ID
