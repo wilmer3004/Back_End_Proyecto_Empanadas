@@ -5,6 +5,7 @@ from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Order_Prod_Model import Order_Prod_Model
 from src.models.cruds.Order_Product_Model import Order_Product_Model
+from src.security.util.Decorators import require_token
 
 class Order_Prod_Route:
     
@@ -13,6 +14,8 @@ class Order_Prod_Route:
     
     # Route to handle CRUD operations for Order Product
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_order_products():
         try:
             # Call the service to get all order products
@@ -25,6 +28,8 @@ class Order_Prod_Route:
     
     # Create a new order product
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
     def create_order_product():
         try:
             data = request.get_json()
@@ -60,6 +65,8 @@ class Order_Prod_Route:
     
     # Get an order product by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_order_product_by_id(id):
         try:
             # Call the service to get an order product by ID
@@ -74,6 +81,8 @@ class Order_Prod_Route:
         
     # Update an order product by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
     def update_order_product(id):
         try:
             data = request.get_json()
@@ -98,6 +107,8 @@ class Order_Prod_Route:
         
     # Update products of an order product by ID
     @main.route('/<int:id>/products', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
     def update_order_product_products(id):
         try:
             data = request.get_json()
@@ -118,6 +129,8 @@ class Order_Prod_Route:
     
     # Change the state of an order product by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
     def change_order_product_state(id):
         try:
             # Call the service to change the state of the order product
