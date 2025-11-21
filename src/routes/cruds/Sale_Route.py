@@ -4,6 +4,7 @@ from src.services.cruds.Sale_Service import Sale_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Sale_Model import Sale_Model
+from src.security.util.Decorators import require_token
 
 class Sale_Route:
     
@@ -11,6 +12,9 @@ class Sale_Route:
     main = Blueprint('sale_blueprint', __name__)
     # Route to handle CRUD operations for Sale
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_sales():
         try:
             # Call the service to get all sales
@@ -23,6 +27,9 @@ class Sale_Route:
     
     # Create a new sale
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_sale():
         try:
             data = request.get_json()
@@ -47,6 +54,9 @@ class Sale_Route:
     
     # Get a sale by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_sale_by_id(id):
         try:
             # Call the service to get a sale by ID
@@ -61,6 +71,9 @@ class Sale_Route:
         
     # Update a sale by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_sale(id):
         try:
             data = request.get_json()
@@ -85,6 +98,9 @@ class Sale_Route:
         
     # Change the sale status by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_sale_state(id):
         try:
             # Call the service to change the state of the sale
