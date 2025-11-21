@@ -79,9 +79,10 @@ class Report_Type_Route:
             data = request.get_json()
             # Call the service to update a report type by ID
             report_type_data = Report_Type_Model(
+                id_report_type=id,
                 name_report_type=data.get('name_report_type'),
                 detail_report_type=data.get('detail_report_type')  
-            )
+            ).to_dict()
             result = Report_Type_Service.update(id, report_type_data)
 
             if "error" in result:
