@@ -32,8 +32,9 @@ class Rol_Route:
                 id_rol=None,
                 name_rol=data.get('name_rol')  
             )
+            rol_data_dict = rol_data.to_dict()
             # Call the service to create a new rol
-            result = Rol_Service.create(rol_data.to_dict())
+            result = Rol_Service.create(rol_data_dict)
 
             if "error" in result:
                 return jsonify(Response_Error(result["error"], code=result.get("code", 500)).to_dict()), result.get("code", 500)
