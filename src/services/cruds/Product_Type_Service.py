@@ -62,7 +62,7 @@ class Product_Type_Service(Crud_Interface):
                 row = cursor.fetchone()
                 if row:
                     product_type = Product_Type_Model(row[0],row[1],row[2],row[3])
-                    return Product_Type_Model.to_dict()
+                    return product_type.to_dict()
                 return {"error":"Product type not found", "code":404}
         except Exception as e:
             print(f"An error ocurred: {e}")
@@ -98,7 +98,7 @@ class Product_Type_Service(Crud_Interface):
         try:
             connection = get_db_conecction()
             with connection.cursor() as cursor:
-                sql_get_state = "SELECT state_product_type FROM product_type WHERE id_product_type = %s"
+                sql_get_state = "SELECT state_product FROM product_type WHERE id_product_type = %s"
                 cursor.execute(sql_get_state, (id,))
                 row = cursor.fetchone()
                 
@@ -108,7 +108,7 @@ class Product_Type_Service(Crud_Interface):
                 current_state = row[0]
                 new_state = not current_state
                 
-                sql = "UPDATE product_type SET state_product_type = %s WHERE id_product_type = %s"
+                sql = "UPDATE product_type SET state_product = %s WHERE id_product_type = %s"
                 cursor.execute(sql, (new_state, id))
                 connection.commit()
                 return {"message":"Product type state changed successfully"}
