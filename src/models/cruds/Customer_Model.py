@@ -1,6 +1,7 @@
 class Customer_Model:
     # Constructor
-    def __init__(self, id_customer, id_user_fk, customer_detail, state_customer):
+    def __init__(self, id_customer, id_user_fk, id_type_customer_fk, customer_detail, state_customer):
+        self.id_type_customer_fk = id_type_customer_fk
         self.__id_customer = id_customer
         self.__id_user_fk = id_user_fk
         self.__customer_detail = customer_detail
@@ -9,6 +10,9 @@ class Customer_Model:
     # Getters
     def get_id_customer(self):
         return self.__id_customer
+    
+    def get_id_type_customer_fk(self):
+        return self.id_type_customer_fk
     
     def get_id_user_fk(self):
         return self.__id_user_fk
@@ -22,6 +26,10 @@ class Customer_Model:
     # Setters
     def set_id_customer(self, id_customer):
         self.__id_customer = id_customer
+        
+    def set_id_type_customer_fk(self, id_type_customer_fk):
+        self.id_type_customer_fk = id_type_customer_fk
+
 
     def set_id_user_fk(self, id_user_fk):
         self.__id_user_fk = id_user_fk
@@ -36,6 +44,7 @@ class Customer_Model:
     def to_dict(self):
         return {
             "id_customer": self.__id_customer,
+            "id_type_customer_fk": self.id_type_customer_fk,
             "id_user_fk": self.__id_user_fk,
             "customer_detail": self.__customer_detail,
             "state_customer": self.__state_customer
