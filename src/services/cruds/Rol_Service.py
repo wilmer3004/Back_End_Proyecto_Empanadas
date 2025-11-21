@@ -28,13 +28,13 @@ class Rol_Service(Crud_Interface):
         #Ensure the connection is closed in the finally block
         finally:
             connection.close()
-    
+    @classmethod
     def create(cls, data):
         try:
             connection = get_db_conecction()
             with connection.cursor() as cursor:
                 sql = """INSERT INTO rol (name_rol) VALUES (%s)"""
-                data_tuple = (data["name_rol"])
+                data_tuple = (data["name_rol"],)
                 cursor.execute(sql, data_tuple)
                 connection.commit()
                 return{"message": "Rol created successfully"}
@@ -68,7 +68,7 @@ def update(cls,id,data):
     try:
         connection = get_db_conecction()
         with connection.cursor() as cursor:
-            sql ="""UPDATE Rol name_rol WHERE id_rol=%s"""
+            sql ="""UPDATE rol set name_rol = %s WHERE id_rol=%s"""
             data_tuple =(data["name_rol"],id)
             cursor.excurte(sql,data_tuple)
             connection.commit()
