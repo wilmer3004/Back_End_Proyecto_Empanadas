@@ -85,7 +85,7 @@ class Order_Prod_Service(Crud_Interface):
             connection = get_db_conecction()
             # Using a cursor to execute SQL queries
             with connection.cursor() as cursor:
-                sql = 'SELECT * FROM order_p WHERE id_order_p = %s'
+                sql = 'SELECT * FROM order_p WHERE id_order = %s'
                 cursor.execute(sql, (id,))
                 row = cursor.fetchone()
                 
