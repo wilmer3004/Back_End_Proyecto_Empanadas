@@ -4,6 +4,7 @@ from src.services.cruds.Person_Service import Person_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Person_Model import Person_Model
+from src.security.util.Decorators import require_token
 
 class Person_Route:
     
@@ -12,6 +13,8 @@ class Person_Route:
     
     # Route to handle CRUD operations for Person
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_persons():
         try:
             # Call the service to get all persons
@@ -24,6 +27,8 @@ class Person_Route:
       
     # Create a new person 
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
     def create_person():
         try:
             # extract JSON data from the request
@@ -53,6 +58,8 @@ class Person_Route:
     
     #Get a person by ID 
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_person_by_id(id):
         try:
             # Call the service to get a person by ID
@@ -69,6 +76,8 @@ class Person_Route:
     
     # Update a person's details
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
     def update_person(id):
         try:
             # Extract JSON data from the request
@@ -99,6 +108,8 @@ class Person_Route:
         
     # Change state of a person (e.g., activate/deactivate)
     @main.route('/<int:id>/change_state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
     def change_person_state(id):
         try:
             # Call the service to change the person's state
