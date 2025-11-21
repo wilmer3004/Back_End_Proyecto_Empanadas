@@ -37,8 +37,8 @@ class Document_Type_Route:
             # Map incoming JSON data to Document_Type_Model fields
             document_type_data = Document_Type_Model(
                 id_document_type=None,
-                name_document_type=data.get('name_document_type_find'),
-                acronym_document_type=data.get('acronym_document_type_find')  
+                name_document_type=data.get('name_document_type'),
+                acronym_document_type=data.get('acronym_document_type')  
             )
             # Call the service to create a new document type
             result = Document_Type_Service.create(document_type_data.to_dict())
@@ -77,8 +77,8 @@ class Document_Type_Route:
             # Map incoming JSON data to Document_Type_Model fields
             document_type_data = Document_Type_Model(
                 id_document_type=id,
-                name_document_type=data.get('name_document_type_find'),
-                acronym_document_type=data.get('acronym_document_type_find'),
+                name_document_type=data.get('name_document_type'),
+                acronym_document_type=data.get('acronym_document_type'),
             )
             # Call the service to update the document type
             result = Document_Type_Service.update(id, document_type_data.to_dict())
