@@ -4,6 +4,7 @@ from src.services.cruds.Product_Type_Service import Product_Type_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Product_Type_Model import Product_Type_Model
+from src.security.util.Decorators import require_token
 
 class Product_Type_Route:
     
@@ -11,6 +12,9 @@ class Product_Type_Route:
     main = Blueprint('product_type_blueprint', __name__)
     # Route to handle CRUD operations for Product Type
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_product_types():
         try:
             # Call the service to get all product types
@@ -23,6 +27,9 @@ class Product_Type_Route:
         
     # Create a new product type
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_product_type():
         try:
             data = request.get_json()
@@ -45,6 +52,9 @@ class Product_Type_Route:
     
     # Get a product type by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_product_type_by_id(id):
         try:
             # Call the service to get a product type by ID
@@ -59,6 +69,9 @@ class Product_Type_Route:
         
     # Update a product type by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_product_type(id):
         try:
             data = request.get_json()
@@ -80,6 +93,9 @@ class Product_Type_Route:
     
     # Change the state of a product type by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_product_type_state(id):
         try:
             # Call the service to change the state of the product type
