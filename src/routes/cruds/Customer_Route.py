@@ -30,6 +30,7 @@ class Customer_Route:
             data = request.get_json()
             customer_data = Customer_Model(
                 id_customer=None,
+                id_type_customer_fk=data.get('id_type_customer_fk'),
                 id_user_fk=data.get('id_user_fk'),
                 customer_detail=data.get('customer_detail'),
                 state_customer=True
@@ -69,6 +70,7 @@ class Customer_Route:
             customer_data = Customer_Model(
                 id_customer=id,
                 id_user_fk=data.get('id_user_fk'),
+                id_type_customer_fk=data.get('id_type_customer_fk'),
                 customer_detail=data.get('customer_detail'),
                 state_customer=data.get('state_customer', True)
             )
