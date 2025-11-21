@@ -4,12 +4,15 @@ from src.services.cruds.Customer_Service import Customer_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Customer_Model import Customer_Model
+from src.security.util.Decorators import require_token
 
 class Customer_Route:
     main = Blueprint('customer_blueprint', __name__)
 
     # Get all customers
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_customers():
         try:
             customers = Customer_Service.consult()
@@ -20,6 +23,8 @@ class Customer_Route:
 
     # Create a new customer
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
     def create_customer():
         try:
             data = request.get_json()
@@ -42,6 +47,8 @@ class Customer_Route:
 
     # Get customer by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_customer_by_id(id):
         try:
             customer = Customer_Service.consult_id(id)
@@ -54,6 +61,8 @@ class Customer_Route:
 
     # Update customer
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
     def update_customer(id):
         try:
             data = request.get_json()
@@ -76,6 +85,8 @@ class Customer_Route:
 
     # Change customer state
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
     def change_customer_state(id):
         try:
             result = Customer_Service.change_state(id)
