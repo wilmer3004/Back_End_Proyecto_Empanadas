@@ -96,7 +96,7 @@ class Document_Type_Service(Crud_Interface):
                 return {"message": "Document type updated successfully"}
             
         except Exception as e:
-            print('An error ocurred: {e}')
+            print(f'An error ocurred: {e}')
             return {"error":"Failed to update document type", "code":500}
         finally:
             connection.close()
