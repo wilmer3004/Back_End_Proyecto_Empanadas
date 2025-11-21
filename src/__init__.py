@@ -11,6 +11,7 @@ from src.routes.cruds.Report_Route import Report_Route
 from src.routes.cruds.Rol_Route import Rol_Route
 from src.routes.cruds.Sale_Route import Sale_Route
 from src.routes.cruds.Order_Prod_Route import Order_Prod_Route
+from src.security.routes.Auth_Route import Auth_Route
 
 app = Flask(__name__)
 
@@ -43,7 +44,8 @@ def init_app(config):
     app.register_blueprint(Sale_Route.main, url_prefix='/api/v1/sales')
     # Register the Order_Prod_Route blueprint with a URL prefix
     app.register_blueprint(Order_Prod_Route.main, url_prefix='/api/v1/order_prods')
-    
+    # Register the Auth_Route blueprint with a URL prefix
+    app.register_blueprint(Auth_Route.main, url_prefix='/api/v1/auth')
     
         
     return app
