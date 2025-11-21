@@ -4,6 +4,7 @@ from src.services.cruds.Rol_Service import Rol_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Rol_Model import Rol_Model
+from src.security.util.Decorators import require_token
 
 class Rol_Route:
     
@@ -12,6 +13,9 @@ class Rol_Route:
     
     # Route to handle CRUD operations for Rol
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_rols():
         try:
             # Call the service to get all rols
@@ -24,6 +28,9 @@ class Rol_Route:
         
     # Create a new rol
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_rol():
         try:
             data = request.get_json()
@@ -46,6 +53,9 @@ class Rol_Route:
     
     # Get a rol by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_rol_by_id(id):
         try:
             # Call the service to get a rol by ID
@@ -60,6 +70,9 @@ class Rol_Route:
     
     # Update a rol by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_rol(id):
         try:
             data = request.get_json()
@@ -81,6 +94,9 @@ class Rol_Route:
     
     # Change the state of a rol by ID
     @main.route('/<int:id>/change_state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_rol_state(id):
         try:
             # Call the service to change the state of the rol
