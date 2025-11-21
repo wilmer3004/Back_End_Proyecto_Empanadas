@@ -63,7 +63,7 @@ class Report_Type_Service(Crud_Interface):
                     report_type = Report_Type_Model(row[0], row[1], row[2], row[3])
                     return report_type.to_dict()
                 else:
-                    return None
+                    return {"error": "Report_type not found", "code": 404}
         # Handle exceptions and ensure the connection is closed
         except Exception as e:
             print(f"An error ocurred: {e}")
