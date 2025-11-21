@@ -4,12 +4,16 @@ from src.services.cruds.Report_Service import Report_Service
 from src.models.cruds.Report_Model import Report_Model
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
+from src.security.util.Decorators import require_token
 
 class Report_Route:
     main = Blueprint('report_blueprint', __name__)
 
     # Get all reports
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_reports():
         try:
             reports = Report_Service.consult()
@@ -20,6 +24,9 @@ class Report_Route:
 
     # Create a new report
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_report():
         try:
             data = request.get_json()
@@ -41,6 +48,9 @@ class Report_Route:
 
     # Get report by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_report_by_id(id):
         try:
             report = Report_Service.consult_id(id)
@@ -53,6 +63,9 @@ class Report_Route:
 
     # Update report
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_report(id):
         try:
             data = request.get_json()
@@ -74,6 +87,9 @@ class Report_Route:
 
     # Change report state
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_report_state(id):
         try:
             result = Report_Service.change_state(id)
