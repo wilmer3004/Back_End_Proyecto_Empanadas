@@ -36,6 +36,7 @@ class Report_Type_Route:
             data = request.get_json()
             # Map incoming JSON data to Report_Type_Model fields
             report_type_data = Report_Type_Model(
+                id_report_type=None,
                 name_report_type=data.get('name_report_type'),
                 detail_report_type=data.get('detail_report_type')  
             )
@@ -59,6 +60,7 @@ class Report_Type_Route:
         try:
             # Call the service to get a report type by ID
             report_type = Report_Type_Service.consult_id(id)
+            print(report_type)
             if report_type:
                 return jsonify(Response_Success("Report type retrieved successfully", report_type).to_dict()), 200
             return jsonify(Response_Error("Report type not found").to_dict()), 404
