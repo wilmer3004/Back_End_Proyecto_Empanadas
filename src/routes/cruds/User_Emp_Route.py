@@ -4,6 +4,7 @@ from src.services.cruds.User_Emp_Service import User_Emp_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.User_Emp_Model import User_Emp_Model
+from src.security.util.Decorators import require_token
 
 class User_Emp_Route:
 
@@ -12,6 +13,9 @@ class User_Emp_Route:
 
     # Get all user_emps
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_user_emps():
         try:
             user_emps = User_Emp_Service.consult()
@@ -22,6 +26,9 @@ class User_Emp_Route:
 
     # Create a new user_emp
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
+
     def create_user_emp():
         try:
             data = request.get_json()
@@ -47,6 +54,9 @@ class User_Emp_Route:
 
     # Get a user_emp by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
+
     def get_user_emp_by_id(id):
         try:
             user_emp = User_Emp_Service.consult_id(id)
@@ -59,6 +69,9 @@ class User_Emp_Route:
 
     # Update a user_emp by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
+
     def update_user_emp(id):
         try:
             data = request.get_json()
@@ -83,6 +96,9 @@ class User_Emp_Route:
 
     # Change user_emp state by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
+
     def change_user_emp_state(id):
         try:
             result = User_Emp_Service.change_state(id)
