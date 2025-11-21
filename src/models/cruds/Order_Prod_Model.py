@@ -1,6 +1,6 @@
 class Order_Prod_Model:
     # Constructor
-    def __init__(self, id_order_prod, id_customer_fk, detail_order, date_order, state_order):
+    def __init__(self, id_order_prod, id_customer_fk, detail_order, date_order, state_order = True):
         self.__id_order_prod = id_order_prod
         self.__id_customer_fk = id_customer_fk
         self.__detail_order = detail_order

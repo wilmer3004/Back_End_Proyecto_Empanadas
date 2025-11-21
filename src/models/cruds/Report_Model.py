@@ -1,7 +1,7 @@
 class Report_Model:
 
     # Constructor
-    def __init__(self, id_report, id_report_type_fk, id_user_fk, date_report, detail_report, state_report):
+    def __init__(self, id_report, id_report_type_fk, id_user_fk, date_report, detail_report, state_report = True):
         self.__id_report = id_report
         self.__id_report_type_fk = id_report_type_fk
         self.__id_user_fk = id_user_fk
@@ -57,4 +57,3 @@ class Report_Model:
             "detail_report": self.__detail_report,
             "state_report": self.__state_report
         }
-    

@@ -1,6 +1,6 @@
 class User_Emp_Model:
     # Constructor
-    def __init__(self, id_user, id_rol_fk, id_person_fk, username_user, password_user, token_user, state_user):
+    def __init__(self, id_user, id_rol_fk, id_person_fk, username_user, password_user, token_user, state_user = True):
         self.__id_user = id_user
         self.__id_rol_fk = id_rol_fk
         self.__id_person_fk = id_person_fk
