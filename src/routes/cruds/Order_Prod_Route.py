@@ -35,21 +35,23 @@ class Order_Prod_Route:
             data = request.get_json()
             # Map incoming JSON data to Order_Prod_Model fields
             order_product_data = Order_Prod_Model(
+                id_order_prod=None,
                 id_customer_fk=data.get('id_customer_fk'),
                 detail_order=data.get('detail_order'),
                 date_order=data.get('date_order'),
                 state_order=data.get('state_order')
             )
             products = data['products']  # List of products to be added to the order
-            order_product_product = []
+            order_product_products = []
             
             for product in products:
                 order_product_product = Order_Product_Model(
+                    id_order_prod_fk=None,
                     id_product_fk=product.get('id_product_fk'),
                     quantity_product=product.get('quantity_product')
                 )
-                order_product_product.append(order_product_product.to_dict())
-            order_product_data.update({"products": order_product_product})
+                order_product_products.append(order_product_product.to_dict())
+            order_product_data.set_products(order_product_products)
                 
             
             # Call the service to create a new order product
