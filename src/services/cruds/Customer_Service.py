@@ -14,7 +14,7 @@ class Customer_Service(Crud_Interface):
                 cursor.execute("SELECT * FROM customer")
                 result_customer = cursor.fetchall()
                 for row in result_customer:
-                    customer = Customer_Model(row[0], row[1], row[3], row[4])
+                    customer = Customer_Model(row[0], row[1], row[2], row[3], row[4])
                     customers.append(customer.to_dict())
             connection.commit()
             return customers
@@ -57,7 +57,7 @@ class Customer_Service(Crud_Interface):
                 cursor.execute("SELECT * FROM customer WHERE id_customer = %s", (id,))
                 row = cursor.fetchone()
                 if row:
-                    customer = Customer_Model(row[0], row[1], row[3], row[4])
+                    customer = Customer_Model(row[0], row[1], row[2], row[3], row[4])
                     return customer.to_dict()
                 return {"error": "Customer not found", "code": 404}
         except Exception as e:
