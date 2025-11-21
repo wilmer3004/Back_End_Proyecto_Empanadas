@@ -54,11 +54,15 @@ class Order_Prod_Service(Crud_Interface):
             # Using a cursor to execute SQL queries
             with connection.cursor() as cursor:
                 
-                sql = 'INSERT INTO order_p (id_customer_fk, detail_order, date_order, state_order) VALUES (%s, %s, %s, %s)'
+                sql = """    INSERT INTO order_p 
+                                (id_customer_fk, detail_order, date_order, state_order)
+                                VALUES (%s, %s, %s, %s)
+                                RETURNING id_order"""
                 data_tuple = (data['id_customer_fk'], data['detail_order'], data['date_order'], data['state_order'])
                 cursor.execute(sql, data_tuple)
                 products = data['products']  # List of products to be added to the order
-                order_id = cursor.lastrowid  # Get the ID of the newly created order
+                order_id = cursor.fetchone()[0]
+                print(f"New order ID: {order_id}")
                 # Insert each product into the order_product table
                 for product in products:
                     sql_product = 'INSERT INTO order_product (id_order_p_fk, id_product_fk, quantity_product) VALUES (%s, %s, %s)'
