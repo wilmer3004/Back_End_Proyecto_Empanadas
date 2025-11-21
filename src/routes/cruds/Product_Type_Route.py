@@ -77,6 +77,7 @@ class Product_Type_Route:
             data = request.get_json()
             # Map incoming JSON data to Product_Type_Model fields
             product_type_data = Product_Type_Model(
+                id_product_type=id,
                 name_product_type=data.get('name_product_type'),
                 detail_product_type=data.get('detail_product_type'),
                 )
