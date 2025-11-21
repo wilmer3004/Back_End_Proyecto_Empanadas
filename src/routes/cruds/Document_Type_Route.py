@@ -4,14 +4,18 @@ from src.services.cruds.Document_Type_Service import Document_Type_Service
 from src.utils.Response_Error import Response_Error
 from src.utils.Response_Success import Response_Success
 from src.models.cruds.Document_Type_Model import Document_Type_Model
+from src.security.util.Decorators import require_token
 
 class Document_Type_Route:
 
     # Deffining the Blueprint for document type routes
     main = Blueprint('document_type_blueprint', __name__)
+    
 
     # Route to handle CRUD operations for Document Type
     @main.route('/', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_document_types():
         try:
             # Call the service to get all document types
@@ -21,9 +25,12 @@ class Document_Type_Route:
         except Exception as e:
             traceback.print_exc()
             return jsonify(Response_Error("Failed to retrieve document types").to_dict()), 500
+      
         
     # Create a new document type
     @main.route('/', methods=['POST'])
+    # Route protection with token verification  
+    @require_token
     def create_document_type():
         try:
             data = request.get_json()
@@ -46,6 +53,8 @@ class Document_Type_Route:
         
     # Get a document type by ID
     @main.route('/<int:id>', methods=['GET'])
+    # Route protection with token verification  
+    @require_token
     def get_document_type_by_id(id):
         try:
             # Call the service to get a document type by ID
@@ -60,6 +69,8 @@ class Document_Type_Route:
         
     # Update a document type by ID
     @main.route('/<int:id>', methods=['PUT'])
+    # Route protection with token verification  
+    @require_token
     def update_document_type(id):
         try:
             data = request.get_json()
@@ -81,6 +92,8 @@ class Document_Type_Route:
     
     # Change the state of a document type by ID
     @main.route('/<int:id>/state', methods=['PATCH'])
+    # Route protection with token verification  
+    @require_token
     def change_document_type_state(id):
         try:
             # Call the service to change the state of the document type
